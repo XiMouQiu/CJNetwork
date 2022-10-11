@@ -89,9 +89,7 @@
     if (urlParams) {
         Url = [self __appendUrl:Url withParams:urlParams];
     }
-    NSURLSessionDataTask *URLSessionDataTask =
-    [self POST:Url parameters:formParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
-    {
+    NSURLSessionDataTask *URLSessionDataTask = [self POST:Url parameters:formParams headers:@{} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (CJUploadFileModel *uploadFileModel in uploadFileModels) {
             NSData *data = uploadFileModel.uploadItemData;
             NSString *fileName = uploadFileModel.uploadItemName;
@@ -131,14 +129,12 @@
                 }
             }
         }
-        
     } progress:uploadProgress success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self __didRequestSuccessForTask:task withResponseObject:responseObject isCacheData:NO forUrl:Url params:formParams settingModel:settingModel success:success];
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self __didRequestFailureForTask:task withResponseError:error forUrl:Url params:formParams settingModel:settingModel failure:failure];
     }];
-    
+
     return URLSessionDataTask;
 }
 

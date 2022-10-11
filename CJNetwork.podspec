@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   #验证方法：pod lib lint CJNetwork.podspec --allow-warnings --use-libraries --verbose
   s.name         = "CJNetwork"
-  s.version      = "0.7.0-beta.7"
+  s.version      = "0.7.0-beta.8"
   s.summary      = "一个AFNetworking应用的封装(支持加解密、缓存、并发数控制)"
   s.homepage     = "https://github.com/dvlproad/CJNetwork"
   s.license      = "MIT"
@@ -25,9 +25,9 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
-  s.source       = { :git => "https://github.com/dvlproad/CJNetwork.git", :tag => "CJNetwork_0.7.0-beta.7" }
+  s.source       = { :git => "https://github.com/XiMouQiu/CJNetwork.git", :tag => "CJNetwork_0.7.0-beta.8" }
   s.source_files  = "CJNetwork/*.{h,m}"
   s.frameworks = 'UIKit'
 
@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
   s.subspec 'CJNetworkCommon' do |ss|
     ss.source_files = "CJNetwork/CJNetworkCommon/**/*.{h,m}"
 
-    ss.dependency 'AFNetworking'
+    ss.dependency 'AFNetworking','~>4.0.1'
     ss.dependency 'YYCache'
     ss.dependency 'MJExtension'
   end
